@@ -1,13 +1,23 @@
 // Main package - IE the package to start in
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 // Program starts here
 func main() {
-	c := NewCharacter("Kid Goku")
-	c.broke = true
-	c.PrintBroke()
+	var justin Character
+	//justin.broke = true
+	justin.name = "Justin"
+	//justin.PrintBroke()
+	PrintBroke(&justin)
+
+	var c *Character
+	c = NewCharacter("Bustin", true)
+	//c := NewCharacter("Justin")
+	//c.broke = false
+	PrintBroke(c)
 }
 
 // Beginning character struct type
@@ -17,15 +27,19 @@ type Character struct {
 }
 
 // Method to create a new character type
-func NewCharacter(name string) *Character {
-	return &Character{name: name}
+func NewCharacter(name2 string, broke2 bool) *Character {
+	var charData Character
+	charData.name = name2
+	charData.broke = broke2
+	//return &Character{name: name}
+	return &charData
 }
 
 // Method to print whether or not the character sucks
-func (c *Character) PrintBroke() {
+func PrintBroke(c *Character) {
 	if c.broke {
-		fmt.Println(c.name + " is broke")
+		log.Println(c.name + " is broke")
 	} else {
-		fmt.Println(c.name + " is not broke")
+		log.Println(c.name + " is not broke")
 	}
 }
